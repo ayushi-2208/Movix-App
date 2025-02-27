@@ -27,7 +27,9 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        setIsOpen(false);
+      })
       .catch((error) => {
         navigate("*");
       });
