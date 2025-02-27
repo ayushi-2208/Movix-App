@@ -11,8 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { addUser, removeUser } from "../../store/userSlice";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { IoMdArrowDropup,IoMdArrowDropdown } from "react-icons/io";
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -116,6 +115,7 @@ const Header = () => {
           <img src={logo} alt="" />
         </div>
         {user && (
+          <>
           <ul className="menuItems">
             <li className="menuItem" onClick={() => navigationHandler("movie")}>
               Movies
@@ -126,24 +126,29 @@ const Header = () => {
             <li className="menuItem">
               <HiOutlineSearch onClick={openSearch} />
             </li>
+            <li
+              className="menuItem"
+              onMouseEnter={() => setIsOpen(true)}
+              onMouseLeave={() => setIsOpen(false)}
+            >
+              <div className="profile-container">
+              <img src={user?.photoURL} alt="user-icon" />
+              {isOpen ? (
+                <IoMdArrowDropup className="icon" />
+              ) : (
+                <IoMdArrowDropdown className="icon" />
+              )}
 
-            {/* <div className="flex p-2">
-              <img className="w-12 h-12" src={user?.photoURL} alt="user-icon" />
-              <button onClick={handleSignOut} className="font-bold text-white">
-                (Sign Out)
-              </button>
-            </div> */}
-            <li className="menuItem" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
-            <img src={user?.photoURL} alt="user-icon" />
-            {isOpen ? <KeyboardArrowUpIcon className="icon" /> : <KeyboardArrowDownIcon className="icon" />}
-            {isOpen && (
-                <button className="signout-button" onClick={handleSignOut}>Sign Out</button>
-            )}
+              </div>
+              
+              {isOpen && (
+                <button className="signout-button" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              )}
             </li>
           </ul>
-        )}
-
-        <div className="mobileMenuItems">
+          <div className="mobileMenuItems">
           <HiOutlineSearch onClick={openSearch} />
           {mobileMenu ? (
             <VscChromeClose onClick={() => setMobileMenu(false)} />
@@ -151,6 +156,10 @@ const Header = () => {
             <SlMenu onClick={openMobileMenu} />
           )}
         </div>
+        </>
+        )}
+
+        
       </ContentWrapper>
       {showSearch && (
         <div className="searchBar">

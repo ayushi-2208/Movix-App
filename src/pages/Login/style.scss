@@ -1,27 +1,4 @@
-// .login-container{
-//     width: 100%;
-//     position: relative;
-//     .login-img-container{
-
-//         .login-bg-img{
-//             width: 100%;
-//             height: 100vh;
-//             opacity: 0.5;
-//         }
-//     }
-
-//     form{
-//          position: absolute;
-//          right: 0;
-//          left: 0;
-//          top: 20%;
-//          background-color: var(--black3);
-//          padding: 20px;
-//          width: 50%;
-//          color: white;
-//          opacity: 0.8;
-//     }
-// }
+@import "../../mixins.scss";
 
 .login-container {
   width: 100%;
@@ -48,17 +25,19 @@
     color: white;
 
     form {
-      width: 40%;
-    //   background-color: var(--black3);
+      width: 80%;
       background-color: rgb(from #020c1b r g b / 50%);
-      padding: 40px 80px;
+      padding: 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 30px;
       border-radius: 10px;
-
+      @include md {
+        width: 40%;
+        padding: 40px 80px;
+      }
       input {
         padding: 15px;
         border-radius: 5px;
@@ -67,17 +46,15 @@
         color: white;
         border: 2px solid white;
         line-height: 1.5;
-
-        
       }
-      input::placeholder{
+      input::placeholder {
         color: white;
         font-size: 14px;
-    }
-    .error-msg{
+      }
+      .error-msg {
         color: red;
-    }
-      button{
+      }
+      button {
         padding: 16px;
         width: 100%;
         border-radius: 5px;
@@ -89,7 +66,7 @@
         font-weight: 500;
         cursor: pointer;
       }
-      p{
+      p {
         cursor: pointer;
       }
     }
