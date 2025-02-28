@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";

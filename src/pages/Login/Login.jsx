@@ -75,6 +75,7 @@ const Login = () => {
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
+    setErrorMessage(null);
   };
   return (
     <div className="login-container">
